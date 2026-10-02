@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>User Login • Voter De-Duplication Analysis Project</title>
+<title>Researcher Login • Voter De-Duplication Portal</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Academic Capstone Project: User Login simulation for Voter De-Duplication Analysis" />
+<meta name="description" content="Academic Capstone Demonstration Project: Voter De-Duplication Analysis System" />
 <meta name="robots" content="noindex, nofollow" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
@@ -30,6 +30,27 @@
     line-height: 1.4;
     text-align: center;
 }
+.quick-fill-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.quick-fill-btn {
+    flex: 1;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-align: center;
+}
+.quick-fill-btn:hover {
+    background: #e2e8f0;
+}
 .input-field {
     width: 100%;
     padding: 10px 14px;
@@ -51,7 +72,7 @@
     background: #2563eb;
     color: white;
     font-weight: 600;
-    padding: 10px 16px;
+    padding: 11px 16px;
     border: none;
     border-radius: 6px;
     font-size: 14px;
@@ -61,37 +82,21 @@
 .btn-primary:hover {
     background: #1d4ed8;
 }
-.btn-demo {
-    display: block;
-    width: 100%;
-    background: #16a34a;
-    color: white !important;
-    text-align: center;
-    font-weight: 600;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    box-sizing: border-box;
-    margin-top: 10px;
-    transition: background 0.15s;
-}
-.btn-demo:hover {
-    background: #15803d;
-}
 </style>
 <script>
+function fillAccount(u, p) {
+	document.forms["f1"]["username"].value = u;
+	document.forms["f1"]["password"].value = p;
+}
 function validate() {
 	var x = document.forms["f1"]["username"].value;
 	var y = document.forms["f1"]["password"].value;
-	if (!x) {
+	if (!x.trim()) {
 		alert("Please enter a username");
 		document.f1.username.focus();
 		return false;
 	}
-	if (!y) {
+	if (!y.trim()) {
 		alert("Please enter a password");
 		document.f1.password.focus();
 		return false;
@@ -124,11 +129,10 @@ function validate() {
 	<div class="login-box">
 		<div class="academic-badge">
 			🎓 <strong>Academic Demonstration Project</strong><br/>
-			This is a student prototype for educational demonstration purposes only.<br/>
-			<small style="color: #64748b;">Do not enter real personal passwords. Use the 1-Click Demo Access below.</small>
+			Educational demonstration portal for voter de-duplication analysis.
 		</div>
 
-		<h3 style="margin-top: 0; color: #1e293b; text-align: center;">User Login</h3>
+		<h3 style="margin-top: 0; color: #1e293b; text-align: center;">Authorized User Login</h3>
 
 		{% if data %}
 			<div style="background: #fef2f2; color: #b91c1c; padding: 8px 12px; border-radius: 6px; font-size: 13px; text-align: center; margin-bottom: 12px;">
@@ -136,29 +140,33 @@ function validate() {
 			</div>
 		{% endif %}
 
-		<a href="{% url 'DemoLogin' %}" class="btn-demo">
-			⚡ One-Click Demo Access (Skip Password)
-		</a>
-
-		<div style="display: flex; align-items: center; margin: 16px 0; color: #94a3b8; font-size: 12px;">
-			<div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
-			<span style="padding: 0 10px;">or login with account</span>
-			<div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
+		<div style="font-size: 11px; color: #64748b; margin-bottom: 6px; font-weight: 600;">
+			Click to auto-fill sample credentials:
+		</div>
+		<div class="quick-fill-bar">
+			<button type="button" class="quick-fill-btn" onclick="fillAccount('sai', '123456');">
+				👤 User: <strong>sai</strong> (pw: 123456)
+			</button>
+			<button type="button" class="quick-fill-btn" onclick="fillAccount('adminuser', '123');">
+				🔑 Admin: <strong>adminuser</strong> (pw: 123)
+			</button>
 		</div>
 
 		<form name="f1" method="post" action="{% url 'UserLogin' %}" onsubmit="return validate();">
 			{% csrf_token %}
 			<label style="font-size: 12px; font-weight: 600; color: #475569;">Username</label>
-			<input type="text" name="username" class="input-field" placeholder="Enter demo username" autocomplete="username" />
+			<input type="text" name="username" class="input-field" placeholder="Enter username (e.g. sai)" autocomplete="username" required />
 
 			<label style="font-size: 12px; font-weight: 600; color: #475569;">Password</label>
-			<input type="password" name="password" class="input-field" placeholder="Enter demo password" autocomplete="current-password" />
+			<input type="password" name="password" class="input-field" placeholder="Enter password (e.g. 123456)" autocomplete="current-password" required />
 
-			<button type="submit" class="btn-primary">Sign In</button>
+			<button type="submit" class="btn-primary">Sign In & Access System</button>
 		</form>
 
-		<div style="text-align: center; margin-top: 14px; font-size: 12px;">
-			<a href="{% url 'Register' %}" style="color: #2563eb; text-decoration: none;">Don't have an account? Sign up here</a>
+		<div style="text-align: center; margin-top: 16px; font-size: 12px;">
+			<a href="{% url 'Register' %}" style="color: #2563eb; text-decoration: none; margin-right: 12px;">Create New Account</a>
+			•
+			<a href="{% url 'Dashboard' %}" style="color: #16a34a; text-decoration: none; margin-left: 12px; font-weight: 600;">Skip Login (Demo Mode)</a>
 		</div>
 	</div>
 </div>
