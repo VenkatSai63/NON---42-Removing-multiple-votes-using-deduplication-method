@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django Server",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Removing-Multiple-Votes-by-using-De-duplication-analysis-main/manage.py",
+            "args": [
+                "runserver",
+                "127.0.0.1:8000"
+            ],
+            "django": true,
+            "cwd": "${workspaceFolder}/Removing-Multiple-Votes-by-using-De-duplication-analysis-main"
+        }
+    ]
+}

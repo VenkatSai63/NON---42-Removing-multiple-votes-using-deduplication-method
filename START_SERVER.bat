@@ -3,7 +3,7 @@ echo ============================================
 echo    Starting Django Deduplication Server
 echo ============================================
 echo.
-cd /d "%~dp0"
+cd /d "%~dp0\Removing-Multiple-Votes-by-using-De-duplication-analysis-main"
 
 set "PY_CMD=python"
 if exist "..\.venv\Scripts\python.exe" (

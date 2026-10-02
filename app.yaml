@@ -1,0 +1,11 @@
+runtime: python311
+instance_class: F1
+
+entrypoint: gunicorn -b :$PORT Deduplicate.wsgi
+
+handlers:
+  - url: /static
+    static_dir: DeduplicateApp/static
+
+  - url: /.*
+    script: auto

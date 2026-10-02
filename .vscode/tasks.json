@@ -4,7 +4,7 @@
     {
       "label": "Run Django Server",
       "type": "shell",
-      "command": "python manage.py runserver",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe manage.py runserver",
       "options": {
         "cwd": "${workspaceFolder}\\Removing-Multiple-Votes-by-using-De-duplication-analysis-main"
       },
