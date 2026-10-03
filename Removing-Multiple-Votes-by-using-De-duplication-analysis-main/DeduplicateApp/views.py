@@ -173,10 +173,10 @@ def Signup(request):
 def UserLogin(request):
     if request.method == 'POST':
         global username
-        username = request.POST.get('username', False)
-        password = request.POST.get('password', False)
-        if RegisterModel.objects.filter(username=username, password=password).exists():
-            context = {'data':'welcome '+username}
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        if username and password and RegisterModel.objects.filter(username=username, password=password).exists():
+            context = {'data':'welcome '+str(username)}
             return render(request, 'UserScreen.html', context)
         else:
             context = {'data':'Invalid login details'}
