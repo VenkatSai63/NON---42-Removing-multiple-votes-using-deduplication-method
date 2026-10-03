@@ -181,16 +181,6 @@ def UserLogin(request):
         else:
             context = {'data':'Invalid login details'}
             return render(request, 'Login.html', context)
-    return render(request, 'Login.html')
-
-def Dashboard(request):
-    global username
-    username = "Guest User"
-    context = {'data': '<b>Welcome to De-Duplication Analysis System (Demo Mode)</b>'}
-    return render(request, 'UserScreen.html', context)
-
-def DemoLogin(request):
-    global username
-    username = "Demo Student"
-    context = {'data': '<b>Logged in as Demo Student</b>'}
-    return render(request, 'UserScreen.html', context)
+    return render(request, 'Login.html')        
+        
+        

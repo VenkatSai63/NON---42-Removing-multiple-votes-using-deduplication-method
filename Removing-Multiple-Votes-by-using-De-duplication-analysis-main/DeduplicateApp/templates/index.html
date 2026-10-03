@@ -1,58 +1,13 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Removing of Multiple Votes by using De-Duplication Analysis</title>
-<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Academic Capstone Project: Removing Multiple Votes by using De-duplication analysis. A web application to detect, analyze and eliminate duplicate voter records." />
-<meta name="keywords" content="voter deduplication project, removing multiple votes by using de-duplication analysis" />
+<meta name="description" content="Removing Multiple Votes by using De-duplication analysis. A web application to detect, analyze and eliminate duplicate voter records." />
+<meta name="keywords" content="remove duplicates project, removing multiple votes by using de-duplication analysis, voter deduplication, duplicate voter removal" />
 <meta name="robots" content="index, follow" />
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
-<style>
-.academic-notice {
-    background: #e0f2fe;
-    border: 1px solid #7dd3fc;
-    color: #0369a1;
-    padding: 12px 20px;
-    border-radius: 8px;
-    margin: 15px auto;
-    max-width: 850px;
-    font-size: 13px;
-    line-height: 1.5;
-    text-align: center;
-}
-.btn-launch {
-    display: inline-block;
-    background: #16a34a;
-    color: white !important;
-    font-weight: bold;
-    padding: 12px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 15px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-    transition: background 0.2s;
-    margin: 10px;
-}
-.btn-launch:hover {
-    background: #15803d;
-}
-.btn-login {
-    display: inline-block;
-    background: #2563eb;
-    color: white !important;
-    font-weight: bold;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    margin: 10px;
-}
-.btn-login:hover {
-    background: #1d4ed8;
-}
-</style>
 </head>
 <body>
 <div id="wrapper">
@@ -60,38 +15,26 @@
 		<div id="logo">
 			<center><font size="4" color="yellow">Removing of Multiple Votes by using De-Duplication Analysis</font></center>
 		</div>
+		<div id="slogan">
+			
+		</div>
 	</div>
 	<div id="menu">
 		<ul><center>
-			<li><a href="{% url 'index' %}">Home</a></li>
-			<li><a href="{% url 'Dashboard' %}" style="font-weight: bold; color: #a7f3d0;">Launch Tool (No Login)</a></li>
-			<li><a href="{% url 'Login' %}">User Login</a></li>
-			<li><a href="{% url 'Register' %}">New User Signup</a></li>
+	  <li><a href="{% url 'index' %}">Home</a></li>
+	    <li><a href="{% url 'Login' %}">User Login</a></li>
+      <li><a href="{% url 'Register' %}">New User Signup Here</a></li>
+			
 		</center></ul>
 		<br class="clearfix" />
 	</div>
 	<div id="splash">
-		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="130" alt="Voter Deduplication Project" />
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="130" alt="" />
 	</div>
 	<br/>
+	<p align="justify"><font size="3" style="font-family: Comic Sans MS" color="black">
+		Removing of Multiple Votes by using De-Duplication Analysis.
 
-	<div class="academic-notice">
-		🎓 <strong>Academic Demonstration Project</strong><br/>
-		Removing Multiple Votes by using De-Duplication Analysis • For Research & Educational Demonstrations.
-	</div>
-
-	<div style="text-align: center; margin: 25px 0;">
-		<a href="{% url 'Dashboard' %}" class="btn-launch">
-			🚀 Launch De-Duplication Dashboard Directly
-		</a>
-		<a href="{% url 'Login' %}" class="btn-login">
-			User Login / Demo Access
-		</a>
-	</div>
-
-	<p align="justify" style="font-size: 13px; line-height: 1.6; padding: 0 20px; color: #333;">
-		<b>Project Overview:</b> In democratic processes, electoral rolls often suffer from duplicate records due to clerical errors, multiple registrations across constituencies, or variations in voter names and guardian credentials. This system provides automated de-duplication through multi-attribute matching (Voter ID, Aadhar Number, and demographic clusters), generates cleaned Excel registries, and plots visual verification graphs.
-	</p>
-</div>
+</p>
 </body>
 </html>
